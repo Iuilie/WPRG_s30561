@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lab5_4</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .header, .footer {
+            background-color: lightgray;
+            padding: 10px;
+            text-align: center;
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            background-color: lightgray;
+            padding: 10px;
+        }
+        .nav a{
+            text-decoration: none;
+            color: dimgray;
+        }
+        .main {
+            padding: 20px;
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            width: 100%;
+        }
+        .main-title {
+            margin-right: 20px;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 20px;
+        }
+        .grid-item {
+            border: 1px solid lightgray;
+            padding: 20px;
+        }
+
+        .grid-item:nth-child(4) {
+            grid-column: span 2;
+        }
+        .grid-item:nth-child(3) {
+            grid-row: span 2 ;
+        }
+        .footer {
+            margin-top: 20px;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <div class="nav">
+        <a href="Strona główna">Strona główna</a>
+        <a href="O nas">O nas</a>
+        <a href="Kontakt">Kontakt</a>
+    </div>
+</div>
+
+<div class="main">
+    <h1 class="main-title">Witaj na naszej skomplikowanej stronie!</h1>
+
+    <div class="grid-container">
+
+        <div class="grid-item">
+            <h2>Funkcja 1</h2>
+            <p>Opis funkcji 1...</p>
+        </div>
+        <div class="grid-item">
+            <h2>Funkcja 2</h2>
+            <p>Opis funkcji 2...</p>
+        </div>
+            <div class="grid-item">
+            <h2>Dodatkowe informacje</h2>
+        <p>...</p>
+        </div>
+        <div class="grid-item">
+            <h2>Funkcja 3</h2>
+            <p>Opis funkcji 3...</p>
+        </div>
+    </div>
+</div>
+
+<div class="footer">© 2023 Skomplikowana strona z flexboxem. Wszelkie prawa zastrzeżone.</div>
+
+</body>
+</html>
