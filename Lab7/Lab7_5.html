@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="an">
+<head>
+    <meta charset="UTF-8">
+    <title>Lab7_5</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+        }
+
+        .kalkulator {
+            margin-bottom: 20px;
+            padding: 20px;
+            border: 1px solid;
+            border-radius: 5px;
+            background-color: #222;
+            width: 300px;
+        }
+
+        input[type="number"],
+        select {
+            margin-bottom: 10px;
+            padding: 8px;
+            width: calc(100% - 16px);
+            border: 1px solid ;
+            border-radius: 4px;
+            background-color: #333;
+            color: white;
+        }
+
+        button {
+            background-color: lightgray;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: lightgray;
+        }
+
+        input[type="text"] {
+            margin-top: 10px;
+            padding: 8px;
+            width: calc(100% - 16px);
+            border: 1px solid lightgray;
+            border-radius: 4px;
+            background-color: #333;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<div class="kalkulator">
+    <h2>Prosty Kalkulator</h2>
+    <input type="number" id="num1" placeholder="Wpisz liczbę">
+    <input type="number" id="num2" placeholder="Wpisz liczbę">
+    <select id="operator">
+        <option value="add">Dodawanie (+)</option>
+        <option value="subtract">Odejmowanie (-)</option>
+        <option value="multiply">Mnożenie (*)</option>
+        <option value="divide">Dzielenie (/)</option>
+    </select>
+    <button onclick="obliczProsty()">Oblicz</button>
+    <input type="text" id="wynikProsty" placeholder="Wynik" readonly>
+</div>
+
+<div class="kalkulator">
+    <h2>Zaawansowany Kalkulator</h2>
+    <input type="number" id="num3" placeholder="Wpisz liczbę">
+    <input type="number" id="num4" placeholder="Wpisz liczbę">
+    <select id="operatorZaawansowany">
+        <option value="cos">Cosinus</option>
+        <option value="sin">Sinus</option>
+        <option value="tan">Tangens</option>
+        <option value="binToDec">Binarne na dziesiętne</option>
+        <option value="decToBin">Dziesiętne na binarne</option>
+        <option value="decToHex">Dziesiętne na szesnastkowe</option>
+        <option value="hexToDec">Szesnastkowe na dziesiętne</option>
+    </select>
+    <button onclick="obliczZaawansowany()">Oblicz</button>
+    <input type="text" id="wynikZaawansowany" placeholder="Wynik" readonly>
+</div>
+
+<script>
+    function obliczProsty() {
+        const liczba1 = parseFloat(document.getElementById('num1').value);
+        const liczba2 = parseFloat(document.getElementById('num2').value);
+        const operator = document.getElementById('operator').value;
+        let wynik;
+
+        switch(operator) {
+            case 'add':
+                wynik = liczba1 + liczba2;
+                break;
+            case 'subtract':
+                wynik = liczba1 - liczba2;
+                break;
+            case 'multiply':
+                wynik = liczba1 * liczba2;
+                break;
+            case 'divide':
+                if(liczba2 !== 0) {
+                    wynik = liczba1 / liczba2;
+                } else {
+                    wynik = "Nie można dzielić przez zero!";
+                }
+                break;
+            default:
+                wynik = "Niepoprawny operator";
+        }
+
+        document.getElementById('wynikProsty').value = wynik;
+    }
+
+    function obliczZaawansowany() {
+        const liczba3 = parseFloat(document.getElementById('num3').value);
+        const liczba4 = parseFloat(document.getElementById('num4').value);
+        const operator = document.getElementById('operatorZaawansowany').value;
+        let wynik;
+
+        switch(operator) {
+            case 'cos':
+                wynik = Math.cos(stopnieNaRadiany(liczba3));
+                break;
+            case 'sin':
+                wynik = Math.sin(stopnieNaRadiany(liczba3));
+                break;
+            case 'tan':
+                wynik = Math.tan(stopnieNaRadiany(liczba3));
+                break;
+            case 'binToDec':
+                wynik = parseInt(liczba3, 2);
+                break;
+            case 'decToBin':
+                wynik = liczba3.toString(2);
+                break;
+            case 'decToHex':
+                wynik = liczba3.toString(16);
+                break;
+            case 'hexToDec':
+                wynik = parseInt(liczba3, 16);
+                break;
+            default:
+                wynik = "Niepoprawny operator";
+        }
+
+        document.getElementById('wynikZaawansowany').value = wynik;
+    }
+
+    function stopnieNaRadiany(stopnie) {
+        return stopnie * (Math.PI / 180);
+    }
+</script>
+</body>
+</html>
